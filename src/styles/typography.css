@@ -1,0 +1,56 @@
+/* HEADINGS, PARAGRAPHS */
+
+p {
+    font-family: var(--font-sans);
+    font-size: var(--size-1);
+    color: var(--clr-secondary)
+}
+
+h1, h2, h3, h4, h5 {
+    --heading-font: var(--font-display-1);
+    font-family: var(--heading-font);
+    font-weight: normal;
+    line-height: 1;
+}
+
+h3 {
+    font-size: var(--size-2);
+}
+
+h2 {
+    font-size: var(--size-3);
+}
+
+h1 {
+    font-size: var(--size-4);
+}
+
+.title {
+    font-size: var(--size-5);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: var(--size-3);
+    }
+
+    h1 {
+        font-size: var(--size-3);
+    }
+
+    h2 {
+        font-size: var(--size-2);
+    }
+
+    h3 {
+        font-size: var(--size-1);
+    }
+
+    p {
+        font-size: var(--size-0);
+    }
+}
+
+a {
+    color: var(--clr-secondary-dk);
+}

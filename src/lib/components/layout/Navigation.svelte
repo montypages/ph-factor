@@ -1,0 +1,69 @@
+<script>
+	import logo from '$lib/assets/bird.png';
+	import { goto } from '$app/navigation';
+	import Button from '../ui/Button.svelte';
+
+
+</script>
+
+<nav>
+	<div class="logo">
+		<a href="/">
+			<img src={logo} width="100" alt="Ruth" />
+		</a>
+	</div>
+	<h3><a href="/">Ruth Creations</a></h3>
+	<ul class="nav-links">
+		<!-- <li class="nav-link"><a href="/about">About</a></li>
+		<li class="nav-link"><a href="/blog">Blog</a></li> -->
+		<li><Button onclick={() => {goto('/about');}} btnText="About" btnSize="var(--size-0)" /> </li>
+		<li><Button onclick={() => {goto('/blog');}} btnText="Blog" btnSize="var(--size-0)" /> </li>
+	</ul>
+</nav>
+
+<style>
+	nav {
+		padding: 0.5em;
+		display: flex;
+		align-items: center;
+        gap: 0.5em;
+	}
+
+	.logo {
+		width: 40px;
+	}
+
+	h3 {
+		margin: 0;
+	}
+
+	.nav-links {
+		list-style-type: none;
+		margin: 0;
+		margin-left: auto;
+		padding: 0;
+		display: flex;
+		gap: 1rem;
+		justify-content: space-around;
+	}
+
+	a {
+		color: var(--clr-light);
+		text-decoration: none;
+	}
+
+	.nav-links a {
+		font-family: var(--font-sans);
+		padding: 0.5em 2em;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.nav-link {
+		transition: scale 240ms ease;
+		&:hover {
+			scale: 1.05;
+		}
+	}
+</style>

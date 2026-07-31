@@ -1,0 +1,13 @@
+@import './variables.css';
+@import './reset.css';
+@import './typography.css';
+@import './layout.css';
+@import './forms.css';
+@import './utilities.css';
+@import './blog.css';
+
+body {
+    background-color: var(--clr-pink-dk);
+    background-image: url('/images/asfalt-light.png');
+    color: var(--clr-light);
+}
