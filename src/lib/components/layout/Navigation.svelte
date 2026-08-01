@@ -1,29 +1,30 @@
 <script>
-	import logo from '$lib/assets/bird.png';
 	import { goto } from '$app/navigation';
+	import logo from '$lib/assets/phFactorLogoSmall.webp'
 	import Button from '../ui/Button.svelte';
 
 
 </script>
 
-<nav>
+<nav class="backdrop-blur">
 	<div class="logo">
 		<a href="/">
-			<img src={logo} width="100" alt="Ruth" />
+			<img src={logo} width="100" alt="pH Factor" />
 		</a>
 	</div>
-	<h3><a href="/">Ruth Creations</a></h3>
 	<ul class="nav-links">
 		<!-- <li class="nav-link"><a href="/about">About</a></li>
 		<li class="nav-link"><a href="/blog">Blog</a></li> -->
-		<li><Button onclick={() => {goto('/about');}} btnText="About" btnSize="var(--size-0)" /> </li>
-		<li><Button onclick={() => {goto('/blog');}} btnText="Blog" btnSize="var(--size-0)" /> </li>
+		<li><Button onclick={() => {goto('/listen');}} btnText="Listen" btnSize="var(--size--1)" /> </li>
+		<li><Button onclick={() => {goto('/calendar');}} btnText="Calendar" btnSize="var(--size--1)" /> </li>
+		<li><Button onclick={() => {goto('/about');}} btnText="About" btnSize="var(--size--1)" /> </li>
+		<li><Button onclick={() => {goto('/contact');}} btnText="Contact" btnSize="var(--size--1)" /> </li>
 	</ul>
 </nav>
 
 <style>
 	nav {
-		padding: 0.5em;
+		padding: 0.5em 2em;
 		display: flex;
 		align-items: center;
         gap: 0.5em;

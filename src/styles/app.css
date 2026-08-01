@@ -4,10 +4,9 @@
 @import './layout.css';
 @import './forms.css';
 @import './utilities.css';
-@import './blog.css';
 
 body {
-    background-color: var(--clr-pink-dk);
-    background-image: url('/images/asfalt-light.png');
-    color: var(--clr-light);
+    background-color: var(--clr-primary-100);
+    background-image: url('/images/waterColor.avif');
+    color: var(--clr-dark);
 }

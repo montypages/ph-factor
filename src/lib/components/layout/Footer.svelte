@@ -1,36 +1,110 @@
 <script>
-    import Button from "../ui/Button.svelte";
-    import { goto } from "$app/navigation";
+    import logo from '$lib/assets/phFactorLogoLarge.webp'
+    import Button from '../ui/Button.svelte';
 
-    let { categories } = $props();
 
 </script>
 
-<footer>
-    <div class="container">
-        <h3>Come back soon!</h3>
-        <div class="flex-group flex-center">
-            <Button onclick={() => {goto('/')}} btnText="Home" />
-            <Button onclick={() => {goto('/about')}} btnText="About" />
-            <Button onclick={() => {goto('/blog')}} btnText="Blog" />
-            {#each categories as category}
-                <Button onclick={() => {goto(`/blog/categories/${category.slug}`)}} btnText={category.name} />
-            {/each}
+
+
+<footer class="backdrop-blur">
+    <div class="footer-grid container">
+        <div class="logo">
+            <a href="/"><img src={logo} alt="pH Factor Big Band"></a>
+        </div>
+        <div class="links">
+            <h2>Links</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/listen">Listen</a></li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <h3><a href="/">Facebook</a></h3>
+        </div>
+        <div class="contact">
+            <h2>Contact</h2>
+            <form action="">
+                <label for="email">
+                    Email
+                    <input type="email" id="email" />
+                </label>
+                <label for="message">
+                    Message
+                    <textarea rows="5" id="message"></textarea>
+                </label>
+                <Button onclick={() => {}} btnText="Submit" btnSize="--var(--size-0)" />
+            </form>
         </div>
     </div>
 </footer>
 
 
 <style>
+
     footer {
-        background-color: var(--clr-primary-dk-50);
-        min-height: 200px;
-        margin-top: 2rem;
-        padding: 2rem 0 4rem 0;
+        padding: 5rem 0;
+        background-color: hsl(0 0 0 / 0.7);
+        color: var(--clr-light);
+    }
+
+    h2 {
+        font-size: var(--size-2);
     }
 
     h3 {
-        text-align: center;
-        line-height: 1;
+        font-size: var(--size-1);
     }
+
+    .footer-grid {
+        display: grid;
+        grid-template-areas: 
+        "logo links contact";
+        grid-template-columns: 200px 1fr 1fr;
+        gap: 1rem;
+        justify-items: center;
+    }
+
+    @media (max-width: 768px) {
+        .footer-grid {
+            grid-template-areas:
+            "logo logo"
+            "links contact";
+            grid-template-columns: 1fr 1fr;
+            justify-items: left;
+        }
+    }
+    @media (max-width: 425px) {
+        .footer-grid {
+            grid-template-areas:
+            "logo"
+            "links"
+            "contact";
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .logo {
+        grid-area: logo;
+        justify-self: center;
+    }
+
+    .links {
+        grid-area: links;
+    }
+
+    .contact {
+        grid-area: contact;
+        width: 100%;
+    }
+
+    label {
+        display: grid;
+    }
+
+    label + label {
+        margin: 1rem 0;
+    }
+    
 </style>

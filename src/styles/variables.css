@@ -1,12 +1,8 @@
 /* COLORS, FONTS, and SPACING */
 
 :root {
-    --font-sans: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
-    --font-display: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
-    --font-display-1: "Fredericka the Great", serif;
-    --font-display-2: "Cabin Sketch", sans-serif;
-    --font-display-3: "Snowburst One", system-ui;
-    --font-display-4: "Emilys Candy", serif;
+    --font-sans: "Montserrat", sans-serif;
+    --font-display: "Rock Salt", cursive;
 
     --size--1: clamp(0.75rem, 0.7159rem + 0.1515vw, 0.8333rem);
     --size-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
@@ -16,15 +12,22 @@
     --size-4: clamp(5.6953rem, 5.4364rem + 1.1506vw, 6.3281rem);
     --size-5: clamp(8.543rem, 8.1547rem + 1.7259vw, 9.4922rem);
 
-    --clr-primary-dk: #0081a7ff;
-    --clr-primary-dk-50: #0080a780;
-    --clr-primary: #00afb9ff;
-    --clr-light: #fdfcdcff;
-    --clr-secondary: #fed9b7ff;
-    --clr-secondary-dk: #f07167ff;
-    --clr-pink: #c22b7b;
-    --clr-pink-dk: #b23b7a;
+    --clr-light: #ddd;
+    --clr-dark: #333;
+    --clr-dark-80: #333333c4;
+    --clr-dark-80: hsl(from var(--clr-dark) h s l / 0.8);
+    --clr-dark-50: #33333384;
+    --clr-dark-50: hsl(from var(--clr-dark) h s l / 0.5);
+    --clr-dark-20: #33333333;
+    --clr-dark-20: hsl(from var(--clr-dark) h s l / 0.2);
+    --clr-primary: hsl(288 78 82);
+    --clr-primary-100: hsl(from var(--clr-primary) h s l / 0.2);
+    --clr-primary-400: hsl(from var(--clr-primary) h s l / 0.5);
+    --clr-primary-800: hsl(from var(--clr-primary) h s l / 0.8);
+    --clr-secondary: #c7f2fc;
+    --clr-secondary-100: hsl(from var(--clr-secondary) h s l / 0.2);
+    --clr-secondary-400: hsl(from var(--clr-secondary) h s l / 0.5);
+    --clr-secondary-800: hsl(from var(--clr-secondary) h s l / 0.8);
 
-    --bg-img: url('/ruth-creations/src/lib/assets/diagmonds-light.png');
-    --bg-img-dk: url('/ruth-creations/src/lib/assets/diagmonds.png');
+    --border-radius: 0.2em;
 }

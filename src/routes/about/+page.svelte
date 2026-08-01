@@ -1,5 +1,4 @@
 <script>
-	import About from "$lib/components/home/About.svelte";
 
 </script>
 

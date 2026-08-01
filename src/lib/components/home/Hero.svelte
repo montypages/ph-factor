@@ -1,51 +1,54 @@
 <script>
-    import heroImg from '$lib/assets/bird.png'
+    import heroImg from '$lib/assets/phFactorLogoLarge.webp'
+    import Button from '../ui/Button.svelte';
+    import { goto } from '$app/navigation'
 </script>
 
 <div class="hero-wrapper">
-    <div class="hero container">
-        <div class="hero-text">
-            <h1 class="title">See What Ruth Creates</h1>
-            <p class="subtitle">Artwork, builds, cooking, and more...</p>
-        </div>
+    <div class="hero">
         <div class="hero-img">
-            <img src={heroImg} alt="Ruth">
+            <img src={heroImg} alt="pH Factor Big Band">
+        </div>
+        <div class="hero-text">
+            <h1 class="title">The most interesting</h1>
+            <h1 class="title">big band in Seattle</h1>
+            <Button onclick={() => goto('/listen')} btnText="Listen Now" btnColor="var(--clr-secondary-400)" />
         </div>
     </div>
 </div>
 
 
 <style>
+
     .hero-wrapper {
-        background-color: hsl(0 0 0 / 0.2);
-        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        height: 80svh;
     }
 
     .hero {
         display: flex;
-        position: relative;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
     }
 
     .hero-img {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        z-index: -1;
-        max-height: 100%;
-        transform: translate(0, -50%);
+        width: 18rem;
     }
 
-    .hero-text {
-        display: flex;
-        flex-direction: column;
-    }
-
-    img {
-        height: 100%;
-    }
-
-    h1 {
-        margin: 0;
+    .title {
+        font-size: 3rem;
         line-height: 1;
+        margin: 0;
+        position: relative;
+        left: -3.2rem;
     }
+    
+    .title:last-of-type {
+        left: -1rem;
+        margin-bottom: 1rem;
+    }
+
 </style>
