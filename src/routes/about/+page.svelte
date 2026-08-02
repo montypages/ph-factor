@@ -1,7 +1,6 @@
 <script>
+    import PageTitle from "$lib/components/layout/PageTitle.svelte";
 
 </script>
 
-<h1>About</h1>
-
-<About />
+<PageTitle pageTitle="About" />

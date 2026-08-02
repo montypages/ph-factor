@@ -34,9 +34,6 @@
 		width: 40px;
 	}
 
-	h3 {
-		margin: 0;
-	}
 
 	.nav-links {
 		list-style-type: none;
@@ -53,18 +50,5 @@
 		text-decoration: none;
 	}
 
-	.nav-links a {
-		font-family: var(--font-sans);
-		padding: 0.5em 2em;
-		&:hover {
-			text-decoration: underline;
-		}
-	}
 
-	.nav-link {
-		transition: scale 240ms ease;
-		&:hover {
-			scale: 1.05;
-		}
-	}
 </style>
