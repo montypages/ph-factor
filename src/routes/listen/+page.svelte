@@ -1,7 +1,5 @@
 <script>
 	import PageTitle from '$lib/components/layout/PageTitle.svelte';
-	import BreakGlass from '$lib/content/break-glass.md';
-	import MusicOfMat from '$lib/content/music-of-mat.md';
 </script>
 
 <PageTitle pageTitle="Listen" />
