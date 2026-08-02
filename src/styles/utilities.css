@@ -1,13 +1,32 @@
 /* HELPER CLASSES */
 
 .padding-top-bottom {
-    padding: 2rem 0;
+	padding: 2rem 0;
+}
+
+.margin-top-bottom {
+	margin: 2rem 0;
 }
 
 .flex-center {
-    justify-content: center;
+	justify-content: center;
 }
 
 .backdrop-blur {
-    backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+
+.copy {
+	max-width: 800px;
+	background-color: hsl(0 0 95% / 0.3);
+	padding: 1.5em;
+	border-radius: var(--border-radius);
+}
+
+.box {
+	padding: 1.5rem;
+	border-radius: 1rem;
+	background-color: var(--clr-light);
+	background-color: hsl(from var(--clr-light) h s l / 0.8);
+	border: 5px solid var(--clr-dark);
 }

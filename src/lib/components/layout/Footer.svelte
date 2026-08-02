@@ -99,12 +99,6 @@
         width: 100%;
     }
 
-    label {
-        display: grid;
-    }
 
-    label + label {
-        margin: 1rem 0;
-    }
     
 </style>

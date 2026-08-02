@@ -6,7 +6,7 @@
 @import './utilities.css';
 
 body {
-    background-color: var(--clr-primary-100);
+    background-color: var(--clr-dark);
     background-image: url('/images/waterColor.avif');
     color: var(--clr-dark);
 }

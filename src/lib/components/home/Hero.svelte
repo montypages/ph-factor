@@ -12,7 +12,10 @@
         <div class="hero-text">
             <h1 class="title">The most interesting</h1>
             <h1 class="title">big band in Seattle</h1>
-            <Button onclick={() => goto('/listen')} btnText="Listen Now" btnColor="var(--clr-secondary-400)" />
+            <div class="cta">
+                <Button onclick={() => goto('/listen')} btnText="Listen Now" btnColor="var(--clr-secondary)" />
+                <Button onclick={() => goto('/contact')} btnText="Contact" btnColor="var(--clr-primary)" btnSize="var(size-0)" />
+            </div>
         </div>
     </div>
 </div>
@@ -44,11 +47,20 @@
         margin: 0;
         position: relative;
         left: -3.2rem;
+        top: 0.5em;
+        z-index: 1;
     }
     
     .title:last-of-type {
         left: -1rem;
         margin-bottom: 1rem;
+    }
+
+    .cta {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0.5rem;
     }
 
 </style>
