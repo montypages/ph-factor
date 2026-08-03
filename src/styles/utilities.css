@@ -30,3 +30,8 @@
 	background-color: hsl(from var(--clr-light) h s l / 0.8);
 	border: 5px solid var(--clr-dark);
 }
+
+.flex-space-between {
+	display: flex;
+	justify-content: space-between;
+}

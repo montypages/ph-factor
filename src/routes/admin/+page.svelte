@@ -1,10 +1,12 @@
 <script>
-	import PostListItem from '$lib/components/admin/PostListItem.svelte';
-	import AdminBlogCard from '$lib/components/blog/AdminBlogCard.svelte';
+
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import Button from '$lib/components/ui/Button.svelte';
+	import CalEvent from '$lib/components/ui/CalEvent.svelte';
+	import { events } from '$lib/data/events.js';
 
+	const sortEvents = events.sort((a, b) => a.dateTime - b.dateTime);
 	let { data } = $props();
 
 	async function deletePost(id) {
@@ -25,26 +27,21 @@
 </div>
 
 <div class="container padding-top-bottom">
-	<Button onclick={() => goto('/admin/new')} btnText="Create New Post" />
+	<Button onclick={() => goto('/admin/new')} btnText="Create New Event" />
 </div>
 
 <div class="container">
 	<ul>
-		{#each data.posts as post}
+		{#each sortEvents as event}
 			<li class="post-item">
-				<PostListItem {post} />
+				<CalEvent {event} />
 			</li>
 		{/each}
 	</ul>
 </div>
 
 <style>
-	.control-btn {
-		width: fit-content;
-		padding: 0.5em 1.5em;
-		background-color: var(--clr-light);
-		border-radius: 5px;
-	}
+
 
 	ul {
 		margin: 0;
@@ -61,7 +58,5 @@
 		margin-top: 0.5em;
 	}
 
-	.welcome {
-		font-size: var(--size--1);
-	}
+
 </style>

@@ -9,9 +9,47 @@ class Event {
 			(this.dateTime = dateTime),
 			(this.details = details));
 	}
+
+	get day() {
+		return this.dateTime
+			.toLocaleDateString('en-US', {
+				weekday: 'short'
+			})
+			.slice(0, 2); // "Mo", "Tu", "We", etc.
+	}
+
+	get month() {
+		return this.dateTime.toLocaleDateString('en-US', {
+			month: '2-digit'
+		});
+	}
+
+	get date() {
+		return this.dateTime.toLocaleDateString('en-US', {
+			day: '2-digit'
+		});
+	}
+
+	get time() {
+		return this.dateTime.toLocaleTimeString('en-US', {
+			hour: 'numeric',
+			minute: '2-digit'
+		});
+	}
+
+	get eventDateTime() {
+		return this.dateTime.toLocaleDateString('en-US', {
+			weekday: 'long',
+			month: 'long',
+			day: 'numeric',
+			year: 'numeric',
+			hour: 'numeric',
+			minute: '2-digit'
+		});
+	}
 }
 
-const events = [
+export const events = [
 	new Event(
 		'1',
 		'pH Factor at Aurora Borealis',
@@ -50,6 +88,30 @@ const events = [
 		'ph-factor-at-mountlake-terrace-high-school',
 		'Mountlake Terrace High School, 21801 44th Ave W, Mountlake Terrace, WA 98043, USA',
 		new Date('2024-10-25T19:00:00Z'),
+		'Come see pH Factor play with special guest Mountlake Terrace High School Jazz Band in the Mountlake Terrace High School Theater.'
+	),
+	new Event(
+		'6',
+		'pH Factor/ feat. Shorewood High School at the Royal Room',
+		'ph-factor-feat-shorewood-high-school-at-the-royal-room',
+		'The Royal Room Seattle, 5000 Rainier Ave S, Seattle, WA 98118, USA',
+		new Date('2027-03-02T15:00:00Z'),
+		'Come see the pH Factor Big Bannd with special guest Shorewood High School Jazz Band!'
+	),
+	new Event(
+		'7',
+		'pH Factor feat. Bothell High School',
+		'ph-factor-feat-bothell-high-school',
+		'The Royal Room Seattle, 5000 Rainier Ave S, Seattle, WA 98118, USA',
+		new Date('2027-11-24T15:00:00Z'),
+		'Tickets $20 advance/$25 at the door:https://www.strangertickets.com/events/159405593/ph-factorbothell-hs-jazz-bandFacebook:https://www.facebook.com/events/816884667034409/'
+	),
+	new Event(
+		'8',
+		'pH Factor at Mountlake Terrace High School',
+		'ph-factor-at-mountlake-terrace-high-school',
+		'Mountlake Terrace High School, 21801 44th Ave W, Mountlake Terrace, WA 98043, USA',
+		new Date('2027-10-25T19:00:00Z'),
 		'Come see pH Factor play with special guest Mountlake Terrace High School Jazz Band in the Mountlake Terrace High School Theater.'
 	)
 ];

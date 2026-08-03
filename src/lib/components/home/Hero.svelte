@@ -48,7 +48,6 @@
         position: relative;
         left: -3.2rem;
         top: 0.5em;
-        z-index: 1;
     }
     
     .title:last-of-type {

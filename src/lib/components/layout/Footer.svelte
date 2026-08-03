@@ -47,6 +47,7 @@
         padding: 5rem 0;
         background-color: hsl(0 0 0 / 0.7);
         color: var(--clr-light);
+        margin-top: 4rem;
     }
 
     h2 {

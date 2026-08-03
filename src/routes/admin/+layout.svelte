@@ -1,6 +1,5 @@
 <script>
 import { invalidateAll, goto } from '$app/navigation';
-import { supabase } from '$lib/supabase/supabaseClient';
 import Button from '$lib/components/ui/Button.svelte';
 
 	let { data, children } = $props();
@@ -22,9 +21,9 @@ import Button from '$lib/components/ui/Button.svelte';
 </script>
 
 <header>
-	<div class="signed-in">
+	<!-- <div class="signed-in">
 		Signed in as {user.email}
-	</div>
+	</div> -->
 
 	<Button onclick={logout} btnText="Sign Out" btnSize="var(--size--1)" />
 </header>
