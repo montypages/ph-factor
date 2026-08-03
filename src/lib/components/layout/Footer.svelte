@@ -1,6 +1,7 @@
 <script>
     import logo from '$lib/assets/phFactorLogoLarge.webp'
     import Button from '../ui/Button.svelte';
+	import ContactForm from '../ui/ContactForm.svelte';
 
 
 </script>
@@ -25,17 +26,7 @@
         </div>
         <div class="contact">
             <h2>Contact</h2>
-            <form action="">
-                <label for="email">
-                    Email
-                    <input type="email" id="email" />
-                </label>
-                <label for="message">
-                    Message
-                    <textarea rows="5" id="message"></textarea>
-                </label>
-                <Button onclick={() => {}} btnText="Submit" btnSize="--var(--size-0)" />
-            </form>
+            <ContactForm btnTxtClr="var(--clr-dark)" />
         </div>
     </div>
 </footer>
@@ -76,7 +67,7 @@
             justify-items: left;
         }
     }
-    @media (max-width: 425px) {
+    @media (max-width: 525px) {
         .footer-grid {
             grid-template-areas:
             "logo"

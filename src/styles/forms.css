@@ -17,3 +17,8 @@ textarea {
 label + label {
 	margin: 1rem 0;
 }
+
+.error {
+	font-size: var(--size-0);
+	color: rgb(175, 0, 0);
+}

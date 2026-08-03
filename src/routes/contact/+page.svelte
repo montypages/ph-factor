@@ -8,7 +8,7 @@
 <p>We want to hear from you!</p>
 
 <div class="margin-top-bottom">
-    <ContactForm />
+    <ContactForm btnColor="var(--clr-secondary)" />
 </div>
 
 <style>
