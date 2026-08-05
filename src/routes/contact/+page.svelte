@@ -5,14 +5,27 @@
 
 <PageTitle pageTitle="Contact" />
 
-<p>We want to hear from you!</p>
-
-<div class="margin-top-bottom">
-    <ContactForm btnColor="var(--clr-secondary)" />
-</div>
+<section>
+    
+    <div class="container backdrop-blur form-container">
+        <h2 >We want to hear from you!</h2>
+        <ContactForm btnColor="var(--clr-secondary)" />
+    </div>
+</section>
 
 <style>
-    p {
+    h2 {
         text-align: center;
+        font-size: var(--size-2);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    section {
+        margin: 4rem 0;
+    }
+
+    .form-container {
+        padding: 1rem;
     }
 </style>
