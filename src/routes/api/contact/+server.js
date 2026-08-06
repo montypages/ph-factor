@@ -1,26 +1,47 @@
 import { json } from '@sveltejs/kit';
 import { sendEmail } from '$lib/server/email';
 import { SMTP_FROM, CONTACT_EMAIL, SMTP_USER } from '$env/static/private';
+import { isRateLimited } from '$lib/server/rateLimiter.js';
 
-export async function POST({ request }) {
-	const { name, email, message, website } = await request.json();
-    const [firstName, lastName] = name.split(" ");
+export async function POST({ request, getClientAddress }) {
+	// const { name, email, message, website } = await request.json();
+    const form = await request.formData();
+    const name = form.get('name');
+    const email = form.get('email');
+    const message = form.get('message');
+    const website = form.get('website');
+    const token = form.get('cf-turnstile-response');
+	const [firstName, lastName] = name.split(' ');
+	const ip = request.headers.get('x-forwarded-for') ?? getClientAddress();
+
+	if (isRateLimited(ip)) {
+		return json(
+			{
+				success: false,
+				message: 'Too many messages. Please try again later.'
+			},
+			{ status: 429 }
+		);
+	}
 
 	// Validate
 	if (!name || !email || !message) {
-		return json({ success: false, message: `<p class="error">All fields are required.</p>` }, { status: 400 });
+		return json(
+			{ success: false, message: `<p class="error">All fields are required.</p>` },
+			{ status: 400 }
+		);
 	}
 
-    if (website) {
-        return json({
-            success: true,
-            message: `
+	if (website) {
+		return json({
+			success: true,
+			message: `
             <h2>Thank You!</h2>
             <p>We appreciate you contacting us.</p>
             <h3>-pH Factor</h3>
             `
-        });
-    }
+		});
+	}
 
 	// Email to you
 	await sendEmail({

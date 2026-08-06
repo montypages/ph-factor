@@ -17,6 +17,8 @@
 		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rock+Salt&display=swap"
 		rel="stylesheet"
 	/>
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer>
+	</script>
 </svelte:head>
 
 <div class="full-page">

@@ -1,10 +1,27 @@
 <script>
 	import { goto } from '$app/navigation';
-	import logo from '$lib/assets/phFactorLogoSmall.webp'
+	import logo from '$lib/assets/phFactorLogoSmall.webp';
 	import NavButton from './NavButton.svelte';
 	import { page } from '$app/state';
 
-
+	const pages = [
+		{
+			name: 'Listen',
+			url: '/listen'
+		},
+		{
+			name: 'Calendar',
+			url: '/calendar'
+		},
+		{
+			name: 'About',
+			url: '/about'
+		},
+		{
+			name: 'Contact',
+			url: '/contact'
+		}
+	];
 </script>
 
 <nav class="backdrop-blur">
@@ -14,10 +31,18 @@
 		</a>
 	</div>
 	<ul class="nav-links">
-		<li><NavButton onclick={() => {goto('/listen');}} btnText="Listen" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/listen')} /> </li>
-		<li><NavButton onclick={() => {goto('/calendar');}} btnText="Calendar" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/calendar')} /> </li>
-		<li><NavButton onclick={() => {goto('/about');}} btnText="About" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/about')} /> </li>
-		<li><NavButton onclick={() => {goto('/contact');}} btnText="Contact" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/contact')} /> </li>
+		{#each pages as p}
+			<li>
+				<NavButton
+					onclick={() => {
+						goto(p.url);
+					}}
+					btnText={p.name}
+					btnSize="var(--size--1)"
+					active={page.url.pathname.startsWith(p.url)}
+				/>
+			</li>
+		{/each}
 	</ul>
 </nav>
 
@@ -26,13 +51,12 @@
 		padding: 0.5em 2em;
 		display: flex;
 		align-items: center;
-        gap: 0.5em;
+		gap: 0.5em;
 	}
 
 	.logo {
 		width: 40px;
 	}
-
 
 	.nav-links {
 		list-style-type: none;
@@ -48,6 +72,4 @@
 		color: var(--clr-light);
 		text-decoration: none;
 	}
-
-
 </style>

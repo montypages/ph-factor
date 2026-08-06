@@ -33,7 +33,7 @@
 		box-shadow: 0 0 0.2em var(--clr-dark-50);
 		font-family: var(--font-sans);
 		font-size: var(--btn-size);
-		text-transform: capitalize;
+		text-transform: uppercase;
 		transition: opacity 200ms ease;
 	}
 	button:hover,

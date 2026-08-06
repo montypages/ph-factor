@@ -5,7 +5,8 @@
 		btnSize = 'var(--size-1)',
 		btnColor = 'var(--clr-primary)',
 		btnTxtClr = 'inherit',
-		disabled = false
+		disabled = false,
+		type = 'button'
 	} = $props();
 </script>
 
@@ -15,6 +16,7 @@
 	style:--btn-color={btnColor} 
 	style:--btn-text-color={btnTxtClr}
 	{disabled}
+	{type}
 >
 	{btnText}
 </button>
@@ -31,7 +33,7 @@
 		box-shadow: 0 0 0.2em var(--clr-dark-50);
 		font-family: var(--font-sans);
 		font-size: var(--btn-size);
-		text-transform: capitalize;
+		text-transform: uppercase;
 		transition: opacity 200ms ease;
 	}
 	button:hover,

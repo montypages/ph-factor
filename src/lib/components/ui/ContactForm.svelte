@@ -1,43 +1,46 @@
 <script>
 	import Button from './Button.svelte';
+    import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
+    import Turnstile from './Turnstile.svelte';
 
-    let { btnColor, btnTxtClr } = $props();
+    let turnstileToken = $state('');
 
-	let name = $state('');
-	let email = $state('');
-	let message = $state('');
-    let website = $state('');
+    function handleTurnstileToken(token) {
+        turnstileToken = token;
+    }
+
+	let { btnColor, btnTxtClr } = $props();
+
+	// let name = $state('');
+	// let email = $state('');
+	// let message = $state('');
+	// let website = $state('');
 	let status = $state({});
-    let submitting = $state(false);
+	let submitting = $state(false);
 
 	async function submitForm(e) {
 		e.preventDefault();
-        submitting = true;
+		submitting = true;
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
 
 		const response = await fetch('/api/contact', {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				name,
-				email,
-				message,
-                website
-			})
+			// headers: {
+			// 	'Content-Type': 'application/json'
+			// },
+			body: formData
 		});
 
 		const result = await response.json();
 
 		status = result;
-        submitting = false;
+		submitting = false;
 
 		if (result.success) {
-			name = '';
-			email = '';
-			message = '';
+			form.reset();
 		}
-
 	}
 </script>
 
@@ -46,31 +49,33 @@
 		<form onsubmit={submitForm}>
 			<label for="name">
 				Name
-				<input type="text" name="name" id="name" bind:value={name} />
+				<input type="text" name="name" id="name"  />
 			</label>
 			<label for="email">
 				Email
-				<input type="email" name="email" id="email" bind:value={email} />
+				<input type="email" name="email" id="email"  />
 			</label>
 			<label for="message">
 				Message
-				<textarea name="message" id="message" rows="6" bind:value={message}></textarea>
+				<textarea name="message" id="message" rows="6" ></textarea>
 			</label>
 			<input
 				class="hpot"
 				type="text"
 				name="website"
-                bind:value={website}
+				
 				tabindex="-1"
 				autocomplete="off"
 			/>
+            <Turnstile onSuccess={handleTurnstileToken} /> 
 			<Button
 				onclick={() => {}}
-				btnText={submitting ? "Sending..." : "Send"}
+				btnText={submitting ? 'Sending...' : 'Send'}
 				{btnColor}
-                {btnTxtClr}
+				{btnTxtClr}
 				btnSize="var(--size-0)"
-                disabled={submitting}
+				disabled={submitting || !turnstileToken}
+                type='submit'
 			/>
 		</form>
 	{/if}
