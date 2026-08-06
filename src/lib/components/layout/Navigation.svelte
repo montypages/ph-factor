@@ -1,7 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
 	import logo from '$lib/assets/phFactorLogoSmall.webp'
-	import Button from '../ui/Button.svelte';
+	import NavButton from './NavButton.svelte';
+	import { page } from '$app/state';
 
 
 </script>
@@ -13,12 +14,10 @@
 		</a>
 	</div>
 	<ul class="nav-links">
-		<!-- <li class="nav-link"><a href="/about">About</a></li>
-		<li class="nav-link"><a href="/blog">Blog</a></li> -->
-		<li><Button onclick={() => {goto('/listen');}} btnText="Listen" btnSize="var(--size--1)" /> </li>
-		<li><Button onclick={() => {goto('/calendar');}} btnText="Calendar" btnSize="var(--size--1)" /> </li>
-		<li><Button onclick={() => {goto('/about');}} btnText="About" btnSize="var(--size--1)" /> </li>
-		<li><Button onclick={() => {goto('/contact');}} btnText="Contact" btnSize="var(--size--1)" /> </li>
+		<li><NavButton onclick={() => {goto('/listen');}} btnText="Listen" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/listen')} /> </li>
+		<li><NavButton onclick={() => {goto('/calendar');}} btnText="Calendar" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/calendar')} /> </li>
+		<li><NavButton onclick={() => {goto('/about');}} btnText="About" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/about')} /> </li>
+		<li><NavButton onclick={() => {goto('/contact');}} btnText="Contact" btnSize="var(--size--1)" active={page.url.pathname.startsWith('/contact')} /> </li>
 	</ul>
 </nav>
 
