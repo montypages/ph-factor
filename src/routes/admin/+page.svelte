@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import Button from '$lib/components/ui/Button.svelte';
-	import CalEvent from '$lib/components/ui/CalEvent.svelte';
+	import AdminCalEvent from '$lib/components/admin/AdminCalEvent.svelte';
 	import { events } from '$lib/data/events.js';
 
 	const sortEvents = events.sort((a, b) => a.dateTime - b.dateTime);
@@ -34,7 +34,7 @@
 	<ul>
 		{#each sortEvents as event}
 			<li class="post-item">
-				<CalEvent {event} />
+				<AdminCalEvent {event} />
 			</li>
 		{/each}
 	</ul>
