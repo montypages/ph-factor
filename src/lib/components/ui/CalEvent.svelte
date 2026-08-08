@@ -15,7 +15,7 @@
         <p id="address">{event.location}</p>
         <p id="dateTime">{event.eventDateTime}</p>
         <div id="details">
-            {event.details}
+            {@html event.detailsHTML}
         </div>
     </div>
 </div>

@@ -1,9 +1,11 @@
 <script>
 	import PageTitle from '$lib/components/layout/PageTitle.svelte';
 	import CalEvent from '$lib/components/ui/CalEvent.svelte';
-	import { events } from '$lib/data/events';
+	// import { events } from '$lib/data/events';
 
-	const sortEvents = events.sort((a, b) => a.dateTime - b.dateTime);
+	// const sortEvents = events.sort((a, b) => a.dateTime - b.dateTime);
+	let { data } = $props();
+	const { events } = data;
 	const today = new Date();
 </script>
 
@@ -13,8 +15,8 @@
 	<div class="container backdrop-blur">
 		<h2>Upcoming Events</h2>
 		<ul>
-			{#each sortEvents as event}
-				{#if event.dateTime >= today}
+			{#each events as event}
+				{#if event.fullDate >= today}
 					<li><CalEvent {event} /></li>
 				{/if}
 			{/each}
@@ -26,8 +28,8 @@
 	<div class="container backdrop-blur">
 		<h2>Previous Events</h2>
 		<ul>
-			{#each sortEvents as event}
-				{#if event.dateTime < today}
+			{#each events as event}
+				{#if event.fullDate < today}
 					<li><CalEvent {event} /></li>
 				{/if}
 			{/each}
