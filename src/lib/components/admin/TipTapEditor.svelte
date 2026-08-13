@@ -4,6 +4,7 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import Figure from '$lib/tiptap/Figure';
 	// import ImageModal from './ImageModal.svelte';
+	import Link from '@tiptap/extension-link';
 
 	let { content = {}, updateContent } = $props();
 
@@ -11,22 +12,28 @@
 	let editor;
 	// let showImageModal = $state(false);
 
-// function insertFigure(data) {
+	// function insertFigure(data) {
 
-// 	if (!editor) return;
+	// 	if (!editor) return;
 
-// 	editor
-// 		.chain()
-// 		.focus()
-// 		.setImage(data)
-// 		.run();
-// }
+	// 	editor
+	// 		.chain()
+	// 		.focus()
+	// 		.setImage(data)
+	// 		.run();
+	// }
 
 	onMount(() => {
 		editor = new Editor({
 			element: editorElement,
 
-			extensions: [StarterKit, Figure],
+			extensions: [
+				StarterKit,
+				Figure,
+				Link.configure({
+					openOnClick: false
+				})
+			],
 
 			content,
 
@@ -39,10 +46,41 @@
 	onDestroy(() => {
 		editor?.destroy();
 	});
+
+	function setLink() {
+		if (!editor) return;
+
+		if (editor.isActive('link')) {
+			editor.chain().focus().unsetLink().run();
+			return;
+		}
+
+		const url = window.prompt('Enter URL');
+
+		if (url) {
+			editor.chain().focus().setLink({ href: url }).run();
+		}
+	}
 </script>
 
 <div class="toolbar">
-	<!-- <button type="button" onclick={() => (showImageModal = true)}> 📷 Image </button> -->
+	<button
+		type="button"
+		onclick={() => editor?.chain().focus().toggleBold().run()}
+		class:active={editor?.isActive('bold')}
+	>
+		Bold
+	</button>
+
+	<button
+		type="button"
+		onclick={() => editor?.chain().focus().toggleItalic().run()}
+		class:active={editor?.isActive('italic')}
+	>
+		Italic
+	</button>
+
+	<button type="button" onclick={setLink} class:active={editor?.isActive('link')}> Link </button>
 </div>
 
 <!-- <ImageModal bind:open={showImageModal} onInsert={insertFigure} /> -->

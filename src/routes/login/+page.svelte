@@ -50,7 +50,7 @@
 			/>
 		</label>
 
-		<Button onclick="submit" btnText={loading ? 'Signing In...' : 'Sign In'} disabled={loading} />
+		<Button type="submit" btnText={loading ? 'Signing In...' : 'Sign In'} disabled={loading} />
 
 		<!-- <a href="#">forgot password</a> -->
 	</form>

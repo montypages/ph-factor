@@ -5,6 +5,7 @@
 	import Button from '../ui/Button.svelte';
 	import CalEvent from '../ui/CalEvent.svelte';
 	import { tiptapToHTML } from '$lib/utils/tiptap';
+	import { formatEvent } from '$lib/utils/formatEvent';
 
 	let { event = null } = $props();
 
@@ -35,15 +36,19 @@
 		}
 	});
 
-	let previewEvent = $derived({
-		name,
-		location: venue,
-		day: 'Sa',
-		month: '08',
-		date: '15',
-		eventDateTime: 'Saturday, August 15, 2026, 7:30 PM',
-		detailsHTML: tiptapToHTML(details)
-	});
+	let previewEvent = $derived(
+		formatEvent({
+			name,
+			venue,
+			address,
+			city,
+			state,
+			zip,
+			date_time,
+			details,
+			location: [venue, address, city, `${state} ${zip}`].filter(Boolean).join(', ')
+		})
+	);
 
 	async function submitEvent(publish) {
 		const eventData = {
@@ -86,73 +91,111 @@
 	}
 </script>
 
-<CalEvent event={previewEvent} />
-
-<form>
-	<label>
-		Name
-		<input bind:value={name} />
-	</label>
-
-	<label>
-		Slug
-		<input
-			bind:value={slug}
-			oninput={() => {
-				slugEdited = true;
-			}}
-		/>
-	</label>
-
-	<label>
-		Venue
-		<input bind:value={venue} />
-	</label>
-
-	<label>
-		Address
-		<input bind:value={address} />
-	</label>
-
-	<label>
-		City
-		<input bind:value={city} />
-	</label>
-
-	<label>
-		State
-		<input bind:value={state} />
-	</label>
-
-	<label>
-		Zip
-		<input bind:value={zip} />
-	</label>
-
-	<label>
-		Date & Time
-		<input type="datetime-local" bind:value={date_time} />
-	</label>
-
-	<label for="details"> Details </label>
-
-	<TipTapEditor id="details" content={details} updateContent={(value) => (details = value)} />
-
-	<div>
-		<Button onclick={() => submitEvent(false)} type="button" btnText="Save Draft" />
-		<Button onclick={() => submitEvent(true)} type="button" btnText="Publish" />
+<div class="form-wrapper">
+	<div class="event-container backdrop-blur">
+		<CalEvent event={previewEvent} />
 	</div>
-</form>
+	
+	<form>
+		<label>
+			Date & Time
+			<input type="datetime-local" bind:value={date_time} />
+		</label>
+	
+		<label>
+			Event
+			<input bind:value={name} />
+		</label>
+	
+		<label>
+			Slug
+			<input
+				bind:value={slug}
+				oninput={() => {
+					slugEdited = true;
+				}}
+			/>
+		</label>
+	
+		<label>
+			Venue
+			<input bind:value={venue} />
+		</label>
+	
+		<label>
+			Address
+			<input bind:value={address} />
+		</label>
+	
+		<div class="form-row">
+			<label class="city">
+				City
+				<input bind:value={city} />
+			</label>
+			<label class="state">
+				State
+				<input bind:value={state} />
+			</label>
+			<label class="zip">
+				Zip
+				<input bind:value={zip} />
+			</label>
+		</div>
+	
+		<div class="form-col">
+			<label for="details"> Details </label>
+			<TipTapEditor id="details" content={details} updateContent={(value) => (details = value)} />
+		</div>
+	
+		<div class='cta-container'>
+			<Button onclick={() => submitEvent(false)} type="button" btnText="Save Draft" />
+			<Button onclick={() => submitEvent(true)} type="button" btnText="Publish" />
+		</div>
+	</form>
+</div>
 
 <style>
 	form {
-		display: grid;
-		width: min(90%, 500px);
+		width: min(90%, 800px);
 		gap: 1rem;
 		margin: 0 auto;
 	}
 
 	label {
 		display: grid;
+	}
+
+	.form-wrapper {
+		padding: 1rem;
+		position: relative;
+	}
+
+	.event-container {
+		position: sticky;
+		top: 1rem;
+		z-index: 2;
+		margin-bottom: 1rem;
+	}
+
+	.form-row {
+		display: flex;
+		align-items: baseline;
+		gap: 0.5rem;
+	}
+
+	.city {
+		flex: 4 1 0%;
+	}
+
+	.state {
+		flex: 1 1 0%;
+	}
+
+	.zip {
+		flex: 2 1 0%;
+	}
+
+	.cta-container {
+		margin-top: 1rem;
 	}
 </style>

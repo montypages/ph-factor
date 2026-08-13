@@ -1,19 +1,19 @@
-// import { redirect } from '@sveltejs/kit';
-// import { createSupabaseServer } from '$lib/supabase/server';
+import { redirect } from '@sveltejs/kit';
+import { createSupabaseServer } from '$lib/supabase/server';
 
-// export async function handle({ event, resolve }) {
-// 	event.locals.supabase = createSupabaseServer(event);
+export async function handle({ event, resolve }) {
+	event.locals.supabase = createSupabaseServer(event);
 
-// 	const {
-// 		data: { session }
-// 	} = await event.locals.supabase.auth.getSession();
+	const {
+		data: { session }
+	} = await event.locals.supabase.auth.getSession();
 
-// 	event.locals.session = session;
-// 	event.locals.user = session?.user ?? null;
+	event.locals.session = session;
+	event.locals.user = session?.user ?? null;
 
-// 	if (event.url.pathname.startsWith('/admin') && !event.locals.user) {
-// 		throw redirect(303, '/login');
-// 	}
+	if (event.url.pathname.startsWith('/admin') && !event.locals.user) {
+		throw redirect(303, '/login');
+	}
 
-// 	return resolve(event);
-// }
+	return resolve(event);
+}

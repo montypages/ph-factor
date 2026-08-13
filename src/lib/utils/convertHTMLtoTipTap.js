@@ -1,7 +1,7 @@
 import { generateJSON } from '@tiptap/html';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
-import Anchor from '@tiptap/extension-link';
+import Anchor, { Link } from '@tiptap/extension-link';
 
 const html = 
        `
@@ -14,7 +14,8 @@ const html =
 const json = generateJSON(html, [
 	StarterKit,
         Image,
-        Anchor
+        Anchor,
+        Link
 ]);
 
 

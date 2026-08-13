@@ -4,18 +4,18 @@
 
 <div class="cal-event box">
     <div class="cal-icon box">
-        <h3 id="day">{event.day}</h3>
+        <h3 id="day">{event.day || 'We'}</h3>
         <div class="date flex-space-between">
-            <p id="month">{event.month}</p>
-            <p id="date">{event.date}</p>
+            <p id="month">{event.month || '10'}</p>
+            <p id="date">{event.date || '14'}</p>
         </div>
     </div>
     <div class="cal-details">
-        <h3>{event.name}</h3>
-        <p id="address">{event.location}</p>
-        <p id="dateTime">{event.eventDateTime}</p>
+        <h3>{event.name || 'Event Title'}</h3>
+        <p id="address">{event.location || 'Venue / Location'}</p>
+        <p id="dateTime">{event.eventDateTime || 'Event date and time'}</p>
         <div id="details">
-            {@html event.detailsHTML}
+            {@html event.detailsHTML || '<p>Event details will appear here.</p>'}
         </div>
     </div>
 </div>
@@ -25,7 +25,7 @@
 
     .cal-event {
         display: flex;
-        align-items: center;
+        align-items: top;
         gap: 1rem;
         border: 1px solid var(--clr-dark);
     }

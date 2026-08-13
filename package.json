@@ -1,5 +1,5 @@
 {
-	"name": "ruth-creations",
+	"name": "ph-factor",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -40,11 +40,11 @@
 	"dependencies": {
 		"@supabase/ssr": "^0.12.4",
 		"@supabase/supabase-js": "^2.112.2",
-		"@tiptap/extension-image": "^3.30.0",
+		"@tiptap/extension-image": "^3.29.1",
 		"@tiptap/extension-link": "^3.30.0",
-		"@tiptap/html": "^3.30.0",
-		"@tiptap/pm": "^3.30.0",
-		"@tiptap/starter-kit": "^3.30.0",
+		"@tiptap/html": "^3.29.1",
+		"@tiptap/pm": "^3.29.1",
+		"@tiptap/starter-kit": "^3.29.1",
 		"browser-image-compression": "^2.0.2",
 		"nodemailer": "^9.0.3"
 	}

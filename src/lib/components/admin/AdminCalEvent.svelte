@@ -31,7 +31,7 @@
 
     .cal-event {
         display: flex;
-        align-items: center;
+        align-items: top;
         gap: 1rem;
         border: 1px solid var(--clr-dark);
     }
