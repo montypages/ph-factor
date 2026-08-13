@@ -3,24 +3,24 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import Figure from '$lib/tiptap/Figure';
-	import ImageModal from './ImageModal.svelte';
+	// import ImageModal from './ImageModal.svelte';
 
 	let { content = {}, updateContent } = $props();
 
 	let editorElement;
 	let editor;
-	let showImageModal = $state(false);
+	// let showImageModal = $state(false);
 
-function insertFigure(data) {
+// function insertFigure(data) {
 
-	if (!editor) return;
+// 	if (!editor) return;
 
-	editor
-		.chain()
-		.focus()
-		.setImage(data)
-		.run();
-}
+// 	editor
+// 		.chain()
+// 		.focus()
+// 		.setImage(data)
+// 		.run();
+// }
 
 	onMount(() => {
 		editor = new Editor({
@@ -42,10 +42,10 @@ function insertFigure(data) {
 </script>
 
 <div class="toolbar">
-	<button type="button" onclick={() => (showImageModal = true)}> 📷 Image </button>
+	<!-- <button type="button" onclick={() => (showImageModal = true)}> 📷 Image </button> -->
 </div>
 
-<ImageModal bind:open={showImageModal} onInsert={insertFigure} />
+<!-- <ImageModal bind:open={showImageModal} onInsert={insertFigure} /> -->
 
 <div bind:this={editorElement}></div>
 
@@ -54,9 +54,10 @@ function insertFigure(data) {
 	:global(.ProseMirror) {
 		min-height: 300px;
 		padding: 1rem;
-		border: 1px solid #ccc;
+		border: 1px solid;
 		border-radius: 8px;
 		outline: none;
+		background-color: #fff;
 	}
 
 	:global(.ProseMirror p) {
