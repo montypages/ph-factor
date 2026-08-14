@@ -23,6 +23,7 @@
 
 		const form = e.currentTarget;
 		const formData = new FormData(form);
+		formData.append('cf-turnstile-response', turnstileToken);
 
 		const response = await fetch('/api/contact', {
 			method: 'POST',
