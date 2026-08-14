@@ -1,8 +1,7 @@
+import { getEvents } from '$lib/server/db/events.js'
 
-// import { getAdminPosts } from "$lib/servers/posts";
-
-// export async function load({ locals }) {
-//     return {
-//         posts: await getAdminPosts(locals.supabase)
-//     }
-// }
+export async function load({ locals }) {
+    return {
+        events: await getEvents(locals.supabase)
+    }
+}

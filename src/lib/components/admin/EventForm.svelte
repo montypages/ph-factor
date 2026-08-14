@@ -4,7 +4,6 @@
 	import { createSlug } from '$lib/utils/createSlugs';
 	import Button from '../ui/Button.svelte';
 	import CalEvent from '../ui/CalEvent.svelte';
-	import { tiptapToHTML } from '$lib/utils/tiptap';
 	import { formatEvent } from '$lib/utils/formatEvent';
 
 	let { event = null } = $props();
@@ -93,7 +92,7 @@
 
 <div class="form-wrapper">
 	<div class="event-container backdrop-blur">
-		<CalEvent event={previewEvent} />
+		<CalEvent showDetails={true} event={previewEvent} />
 	</div>
 	
 	<form>
@@ -148,8 +147,9 @@
 		</div>
 	
 		<div class='cta-container'>
+			<Button onclick={() => goto('/admin')} type="button" btnText="Cancel" />
 			<Button onclick={() => submitEvent(false)} type="button" btnText="Save Draft" />
-			<Button onclick={() => submitEvent(true)} type="button" btnText="Publish" />
+			<Button onclick={() => submitEvent(true)} type="button" btnText="Publish" btnColor="var(--clr-secondary)" />
 		</div>
 	</form>
 </div>

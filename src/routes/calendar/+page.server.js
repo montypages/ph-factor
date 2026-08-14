@@ -1,7 +1,7 @@
-import { getEvents } from "$lib/server/db/events";
+import { getPublishedEvents } from "$lib/server/db/events";
 
-export async function load() {
+export async function load({ locals }) {
     return {
-        events: await getEvents()
+        events: await getPublishedEvents(locals.supabase)
     };
 }

@@ -1,6 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { updatePost } from '$lib/servers/posts';
-import { deletePost } from '$lib/servers/posts';
+import { updateEvent, deleteEvent } from '$lib/server/db/events.js';
 
 export async function PUT({ locals, params, request }) {
 	if (!locals.session) {
@@ -9,15 +8,15 @@ export async function PUT({ locals, params, request }) {
 		});
 	}
 
-	const post = await request.json();
+	const event = await request.json();
 
-	const updatedPost = await updatePost(
-		locals.supabase, 
+	const updatedEvent = await updateEvent(
+		locals.supabase,
 		params.id,
-		post
+		event
 	);
 
-	return json(updatedPost);
+	return json(updatedEvent);
 }
 
 export async function DELETE({ locals, params }) {
@@ -27,9 +26,7 @@ export async function DELETE({ locals, params }) {
 		});
 	}
 
-	await deletePost(locals.supabase, params.id);
+	await deleteEvent(locals.supabase, params.id);
 
-	return new Response(null, {
-		status: 204
-	});
+	return json({ success: true });
 }

@@ -1,22 +1,24 @@
 <script>
-
-	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import Button from '$lib/components/ui/Button.svelte';
 	import AdminCalEvent from '$lib/components/admin/AdminCalEvent.svelte';
-	import { events } from '$lib/data/events.js';
 
-	const sortEvents = events.sort((a, b) => a.dateTime - b.dateTime);
 	let { data } = $props();
+	const events = data.events;
 
-	async function deletePost(id) {
-		const confirmed = confirm('Are you sure you want to delete this post?');
+	async function handleDelete(event) {
+		const confirmed = confirm(`Are you sure you want to delete "${event.name}"?`);
 
 		if (!confirmed) return;
 
-		await fetch(`/api/admin/posts/${id}`, {
+		const response = await fetch(`/api/admin/events/${event.id}`, {
 			method: 'DELETE'
 		});
+
+		if (!response.ok) {
+			console.error(await response.text());
+			return;
+		}
 
 		location.reload();
 	}
@@ -32,17 +34,15 @@
 
 <div class="container">
 	<ul>
-		{#each sortEvents as event}
+		{#each events as event}
 			<li class="post-item">
-				<AdminCalEvent {event} />
+				<AdminCalEvent {event} onDelete={handleDelete} />
 			</li>
 		{/each}
 	</ul>
 </div>
 
 <style>
-
-
 	ul {
 		margin: 0;
 		padding: 0;
@@ -57,6 +57,4 @@
 	li + li {
 		margin-top: 0.5em;
 	}
-
-
 </style>

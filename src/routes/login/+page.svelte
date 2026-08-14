@@ -1,5 +1,5 @@
 <script>
-	import { supabase } from '$lib/supabase/supabaseClient';
+	import { supabase } from '$lib/supabase/client';
 	import { goto } from '$app/navigation';
 	import Button from '$lib/components/ui/Button.svelte';
 

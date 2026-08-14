@@ -1,12 +1,9 @@
 <script>
-	import PostForm from '$lib/components/admin/PostForm.svelte';
+	import EventForm from '$lib/components/admin/EventForm.svelte';
 
 	let { data } = $props();
 </script>
 
-<h1>Edit Post</h1>
+<h1>Edit Event</h1>
 
-<PostForm
-	post={data.post}
-	categories={data.categories}
-/>
+<EventForm event={data.event} />

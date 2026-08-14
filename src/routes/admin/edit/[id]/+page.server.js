@@ -1,17 +1,14 @@
 import { error } from '@sveltejs/kit';
-import { getPostById } from '$lib/servers/posts';
-import { getCategories } from '$lib/servers/categories';
+import { getEventById } from '$lib/server/db/events.js';
 
 export async function load({ locals, params }) {
-	const post = await getPostById(locals.supabase, params.id);
-	const categories = await getCategories(locals.supabase);
+	const event = await getEventById(locals.supabase, params.id);
 
-	if (!post) {
-		throw error(404, 'Post not found');
+	if (!event) {
+		throw error(404, 'Event not found');
 	}
 
 	return {
-		post,
-		categories
+		event
 	};
 }

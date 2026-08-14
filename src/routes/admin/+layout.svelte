@@ -1,6 +1,7 @@
 <script>
 import { invalidateAll, goto } from '$app/navigation';
 import Button from '$lib/components/ui/Button.svelte';
+import { supabase } from '$lib/supabase/client';
 
 	let { data, children } = $props();
 
@@ -20,10 +21,10 @@ import Button from '$lib/components/ui/Button.svelte';
 	}
 </script>
 
-<header>
-	<!-- <div class="signed-in">
+<header class="backdrop-blur">
+	<p class="signed-in">
 		Signed in as {user.email}
-	</div> -->
+	</p>
 
 	<Button onclick={logout} btnText="Sign Out" btnSize="var(--size--1)" />
 </header>
@@ -32,6 +33,12 @@ import Button from '$lib/components/ui/Button.svelte';
 
 <style>
 	.signed-in {
+		margin-top: 0;
 		margin-bottom: 0.5em;
+		font-size: var(--size--1);
+	}
+
+	header {
+		padding: 0 1rem;
 	}
 </style>
