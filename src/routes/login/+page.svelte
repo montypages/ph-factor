@@ -52,7 +52,7 @@
 
 		<Button type="submit" btnText={loading ? 'Signing In...' : 'Sign In'} disabled={loading} />
 
-		<!-- <a href="#">forgot password</a> -->
+		<a href="/forgot-password">forgot password</a>
 	</form>
 
 	{#if error}
@@ -73,7 +73,7 @@
 	}
 
 	a {
-		color: var(--clr-secondary);
+		color: var(--clr-dark);
 	}
 
 	.error {

@@ -44,6 +44,21 @@
 			</li>
 		{/each}
 	</ul>
+	<ul class="mobile-nav-links">
+		{#each pages as p}
+			<li>
+				<NavButton
+					onclick={() => {
+						goto(p.url);
+					}}
+					btnText={p.name}
+					btnSize="var(--size--1)"
+					active={page.url.pathname.startsWith(p.url)}
+					btnColor="var(--clr-secondary)"
+				/>
+			</li>
+		{/each}
+	</ul>
 </nav>
 
 <style>
@@ -52,6 +67,8 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5em;
+		position: relative;
+		z-index: 10;
 	}
 
 	.logo {
@@ -66,6 +83,31 @@
 		display: flex;
 		gap: 1rem;
 		justify-content: space-around;
+	}
+
+	.mobile-nav-links {
+		display: none;
+	}
+
+	@media (max-width: 600px) {
+		.nav-links {
+			display: none;
+		}
+
+		.mobile-nav-links {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: end;
+			list-style-type: none;
+			margin: 0;
+			margin-left: auto;
+			padding: 0;
+			gap: 0.5rem;
+			position: absolute;
+			top: 0.5em;
+			right: 0.5em;
+		}
 	}
 
 	a {
