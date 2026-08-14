@@ -93,6 +93,7 @@
 
 <div class="form-wrapper">
 	<div class="event-container backdrop-blur">
+		<p>Preview</p>
 		<CalEvent showDetails={true} event={previewEvent} />
 	</div>
 
@@ -148,13 +149,13 @@
 		</div>
 
 		<div class="cta-container">
-			<Button onclick={() => goto(resolve('/admin'))} type="button" btnText="Cancel" />
-			<Button onclick={() => submitEvent(false)} type="button" btnText="Save Draft" />
+			<Button onclick={() => goto(resolve('/admin'))} type="button" btnText="Cancel" btnSize="var(--size-0)" />
+			<Button onclick={() => submitEvent(false)} type="button" btnText="Save Draft" btnSize="var(--size-0)" />
 			<Button
 				onclick={() => submitEvent(true)}
 				type="button"
 				btnText="Publish"
-				btnColor="var(--clr-secondary)"
+				btnColor="var(--clr-secondary)" btnSize="var(--size-0)"
 			/>
 		</div>
 	</form>
@@ -183,25 +184,37 @@
 		margin-bottom: 1rem;
 	}
 
+	.event-container p {
+		margin: 0;
+	}
+
 	.form-row {
 		display: flex;
 		align-items: baseline;
 		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 
 	.city {
-		flex: 4 1 0%;
+		flex: 4;
 	}
 
-	.state {
-		flex: 1 1 0%;
+	.state input {
+		width: 4em;
 	}
 
 	.zip {
-		flex: 2 1 0%;
+		flex: 1;
 	}
 
 	.cta-container {
 		margin-top: 1rem;
+	}
+
+	@media (max-width: 960px) {
+		.cta-container {
+			display: grid;
+			gap: 0.5rem;
+		}
 	}
 </style>

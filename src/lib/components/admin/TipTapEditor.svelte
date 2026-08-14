@@ -8,19 +8,19 @@
 	let { content = {}, updateContent } = $props();
 
 	let editorElement;
-	let editor;
-	// let showImageModal = $state(false);
+	let editor = $state();
 
-	// function insertFigure(data) {
+	let isBold = $state(false);
+	let isItalic = $state(false);
+	let isLink = $state(false);
 
-	// 	if (!editor) return;
+	function updateToolbarState() {
+		if (!editor) return;
 
-	// 	editor
-	// 		.chain()
-	// 		.focus()
-	// 		.setImage(data)
-	// 		.run();
-	// }
+		isBold = editor.isActive('bold');
+		isItalic = editor.isActive('italic');
+		isLink = editor.isActive('link');
+	}
 
 	onMount(() => {
 		editor = new Editor({
@@ -37,6 +37,17 @@
 
 			onUpdate({ editor }) {
 				updateContent(editor.getJSON());
+				updateToolbarState();
+			},
+
+
+			onSelectionUpdate() {
+				updateToolbarState();
+			},
+
+
+			onTransaction() {
+				updateToolbarState();
 			}
 		});
 	});
@@ -63,22 +74,26 @@
 
 <div class="toolbar">
 	<button
+		aria-label="bold"
 		type="button"
 		onclick={() => editor?.chain().focus().toggleBold().run()}
-		class:active={editor?.isActive('bold')}
+		class:active={isBold}
 	>
-		Bold
+		<i class="fa-solid fa-bold"></i>
 	</button>
 
 	<button
+		aria-label="italic"
 		type="button"
 		onclick={() => editor?.chain().focus().toggleItalic().run()}
-		class:active={editor?.isActive('italic')}
+		class:active={isItalic}
 	>
-		Italic
+		<i class="fa-solid fa-italic"></i>
 	</button>
 
-	<button type="button" onclick={setLink} class:active={editor?.isActive('link')}> Link </button>
+	<button aria-label="link" type="button" onclick={setLink} class:active={isLink}>
+		<i class="fa-solid fa-link"></i>
+	</button>
 </div>
 
 <!-- <ImageModal bind:open={showImageModal} onInsert={insertFigure} /> -->
@@ -97,6 +112,22 @@
 	}
 
 	:global(.ProseMirror p) {
-		margin-bottom: 1rem;
+		margin: 0;
+	}
+
+	:global(.ProseMirror p + p) {
+		margin-top: 1rem;
+	}
+
+	.toolbar button {
+		padding: 0.5em;
+		background-color: var(--clr-secondary);
+		border: 1px solid var(--clr-dark);
+		margin: 0.5em 0;
+		opacity: 0.5;
+	}
+
+	.toolbar button.active {
+		opacity: 1;
 	}
 </style>

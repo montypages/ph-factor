@@ -7,11 +7,25 @@
 </script>
 
 <div class="cal-event box">
-	<div class="cal-icon box">
-		<h3 id="day">{event.day}</h3>
-		<div class="date flex-space-between">
-			<p id="month">{event.month}</p>
-			<p id="date">{event.date}</p>
+	<div class="icon-actions-container">
+		<div class="cal-icon box">
+			<h3 id="day">{event.day}</h3>
+			<div class="date flex-space-between">
+				<p id="month">{event.month}</p>
+				<p id="date">{event.date}</p>
+			</div>
+		</div>
+		<div class="actions">
+			<p id="published">{event.published ? 'Published' : 'Draft'}</p>
+			<Button
+				btnText="Edit"
+				onclick={() => {
+					goto(resolve(`/admin/edit/${event.id}`));
+				}}
+				btnSize="var(--size--1)"
+				btnColor="var(--clr-secondary)"
+			/>
+			<Button btnText="Delete" onclick={() => onDelete(event)} btnSize="var(--size--1)" />
 		</div>
 	</div>
 	<div class="cal-details">
@@ -22,18 +36,6 @@
 			{@html event.detailsHTML}
 		</div>
 	</div>
-	<div class="actions">
-		<p id="published">{event.published ? 'Published' : 'Draft'}</p>
-		<Button
-			btnText="Edit"
-			onclick={() => {
-				goto(resolve(`/admin/edit/${event.id}`));
-			}}
-			btnSize="var(--size--1)"
-			btnColor="var(--clr-secondary)"
-		/>
-		<Button btnText="Delete" onclick={() => onDelete(event)} btnSize="var(--size--1)" />
-	</div>
 </div>
 
 <style>
@@ -43,53 +45,67 @@
 		gap: 1rem;
 		border: 1px solid var(--clr-dark);
 	}
-
+	
 	.cal-details {
 		flex: 5;
 	}
-
+	
 	.cal-details h3 {
 		font-size: var(--size-1);
 		margin: 0;
 	}
-
+	
 	.cal-details p {
 		font-size: var(--size-0);
 		margin: 0;
 	}
-
+	
 	.cal-icon {
 		padding: 5px;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
 		height: 100px;
-		flex: 0 0;
+		width: 100px;
 	}
-
+	
 	#day {
 		font-family: var(--font-sans);
 		font-weight: 700;
 		text-align: center;
-		margin: auto 0;
+		align-self: center;
+		justify-self: center;
 		width: 100px;
+		margin: auto 0;
 	}
-
+	
 	.date p {
 		font-size: var(--size--1);
 		margin: 0;
 	}
-
+	
 	.actions {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: 1rem;
-		margin-left: auto;
-		flex: 1;
+		gap: 0.25rem;
+	}
+	
+	#published {
+		font-size: var(--size-0);
+		margin: 0;
+		margin-top: 1rem;
 	}
 
-	#published {
-		font-size: var(--size-1);
+	@media (max-width: 768px) {
+		.cal-event {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.icon-actions-container {
+			display: flex;
+			gap: 1rem;
+		}
 	}
 </style>

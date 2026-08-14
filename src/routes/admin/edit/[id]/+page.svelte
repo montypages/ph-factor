@@ -3,7 +3,9 @@
 
 	let { data } = $props();
 </script>
-
-<h1>Edit Event</h1>
-
-<EventForm event={data.event} />
+<div class="container">
+	
+	<h1>Edit Event</h1>
+	
+	<EventForm event={data.event} />
+</div>
