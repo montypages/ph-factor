@@ -1,7 +1,9 @@
 /* CSS RESET */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
 
 body {
-    box-sizing: border-box;
     margin: 0;
 }
 

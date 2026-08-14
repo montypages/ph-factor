@@ -10,7 +10,7 @@
 		<div class="player">
             <iframe
                 title="In Case of Emergency: Break Glass by pH Factor Big Band"
-                style="border: 0; width: 350px; height: 621px;"
+                style="border: 0; width: 100%; height: 621px;"
                 src="https://bandcamp.com/EmbeddedPlayer/album=130969494/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/"
                 seamless
                 ><a href="https://phfactorbigband.bandcamp.com/album/in-case-of-emergency-break-glass"
@@ -42,7 +42,7 @@
 		<div class="player">
             <iframe
                 title="The Music of Mat Montgomery by pH Factor Big Band"
-                style="border: 0; width: 350px; height: 654px;"
+                style="border: 0; width: 100%; height: 654px;"
                 src="https://bandcamp.com/EmbeddedPlayer/album=3068925089/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/"
                 seamless
                 ><a href="https://phfactorbigband.bandcamp.com/album/the-music-of-mat-montgomery"
@@ -102,11 +102,18 @@
             "title"
             "player"
             "copy";
+			grid-template-columns: minmax(0, 1fr);
         }
 
         .player {
+			width: 100%;
+			max-width: 350px;
             justify-self: center;
         }
+
+		.copy {
+			min-width: 0;
+		}
     }
 
 	.album-title {
@@ -117,9 +124,12 @@
 		grid-area: player;
         border-radius: 0.5rem;
         overflow: clip;
+		min-width: 0;
+		width: min(100%, 350px);
 	}
 
 	.copy {
 		grid-area: copy;
+		min-width: 0;
 	}
 </style>

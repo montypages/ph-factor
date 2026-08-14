@@ -1,16 +1,11 @@
-
 import { formatEvent } from '$lib/utils/formatEvent';
 
 export async function createUniqueEventSlug(supabase, currentSlug, currentId = null) {
-
 	let slug = currentSlug;
 	let number = 2;
 
 	while (true) {
-		let query = supabase
-			.from('events')
-			.select('id')
-			.eq('slug', slug);
+		let query = supabase.from('events').select('id').eq('slug', slug);
 
 		if (currentId) {
 			query = query.neq('id', currentId);
@@ -39,7 +34,7 @@ export async function getEvents(supabase) {
 
 	if (error) throw error;
 
-    const formattedEvents = data.map(formatEvent);
+	const formattedEvents = data.map(formatEvent);
 
 	return formattedEvents;
 }
@@ -53,17 +48,13 @@ export async function getPublishedEvents(supabase) {
 
 	if (error) throw error;
 
-    const formattedEvents = data.map(formatEvent);
+	const formattedEvents = data.map(formatEvent);
 
 	return formattedEvents;
 }
 
 export async function getEventById(supabase, id) {
-	const { data, error } = await supabase
-		.from('events')
-		.select('*')
-		.eq('id', id)
-		.single();
+	const { data, error } = await supabase.from('events').select('*').eq('id', id).single();
 
 	if (error) throw error;
 
@@ -126,10 +117,7 @@ export async function updateEvent(supabase, id, event) {
 }
 
 export async function deleteEvent(supabase, id) {
-	const { error } = await supabase
-		.from('events')
-		.delete()
-		.eq('id', id);
+	const { error } = await supabase.from('events').delete().eq('id', id);
 
 	if (error) {
 		throw error;
@@ -137,4 +125,3 @@ export async function deleteEvent(supabase, id) {
 
 	return true;
 }
-

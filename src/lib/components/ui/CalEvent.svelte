@@ -1,4 +1,5 @@
 <script>
+	import { sanitizeHTML } from "$lib/utils/sanitizeHTML";
 	let { event, showDetails=false } = $props();
 
 	const isUpcoming = showDetails || event.fullDate >= new Date();
@@ -18,7 +19,7 @@
 		<p id="dateTime">{event.eventDateTime || 'Event date and time'}</p>
 		{#if isUpcoming}
 			<div id="details">
-				{@html event.detailsHTML || '<p>Event details will appear here.</p>'}
+				{@html sanitizeHTML(event.detailsHTML)}
 			</div>
 		{/if}
 	</div>
@@ -30,6 +31,13 @@
 		align-items: top;
 		gap: 1rem;
 		border: 1px solid var(--clr-dark);
+	}
+
+	@media (max-width: 600px) {
+		.cal-event {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	.cal-details h3 {
@@ -48,14 +56,17 @@
 		display: flex;
 		flex-direction: column;
 		height: 100px;
+		width: 100px;
 	}
 
 	#day {
 		font-family: var(--font-sans);
 		font-weight: 700;
 		text-align: center;
-		margin: auto 0;
+		align-self: center;
+		justify-self: center;
 		width: 100px;
+		margin: auto 0;
 	}
 
 	.date p {

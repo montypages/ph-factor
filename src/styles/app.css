@@ -12,3 +12,7 @@ body {
     background-repeat: repeat-y;
     color: var(--clr-dark);
 }
+
+html, body {
+    overflow-x: hidden;
+}

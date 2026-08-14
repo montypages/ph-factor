@@ -15,7 +15,7 @@
 	<div class="container backdrop-blur">
 		<h2>Upcoming Events</h2>
 		<ul>
-			{#each events as event}
+			{#each events as event (event.id)}
 				{#if event.fullDate >= today}
 					<li><CalEvent {event} /></li>
 				{/if}
@@ -28,9 +28,11 @@
 	<div class="container backdrop-blur">
 		<h2>Previous Events</h2>
 		<ul>
-			{#each events as event}
+			{#each events as event, i (event.id)}
 				{#if event.fullDate < today}
-					<li><CalEvent {event} /></li>
+					{#if i <= 5}
+						<li><CalEvent {event} /></li>
+					{/if}
 				{/if}
 			{/each}
 		</ul>
