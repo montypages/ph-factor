@@ -2,7 +2,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
-	import Figure from '$lib/tiptap/Figure';
 	// import ImageModal from './ImageModal.svelte';
 	import Link from '@tiptap/extension-link';
 
@@ -29,7 +28,6 @@
 
 			extensions: [
 				StarterKit,
-				Figure,
 				Link.configure({
 					openOnClick: false
 				})

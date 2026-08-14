@@ -1,16 +1,16 @@
 import { json } from '@sveltejs/kit';
 import { sendEmail } from '$lib/server/email';
-import { SMTP_FROM, CONTACT_EMAIL, SMTP_USER } from '$env/static/private';
+import { SMTP_FROM, SMTP_USER } from '$env/static/private';
 import { isRateLimited } from '$lib/server/rateLimiter.js';
 
 export async function POST({ request, getClientAddress }) {
 	// const { name, email, message, website } = await request.json();
-    const form = await request.formData();
-    const name = form.get('name');
-    const email = form.get('email');
-    const message = form.get('message');
-    const website = form.get('website');
-    const token = form.get('cf-turnstile-response');
+	const form = await request.formData();
+	const name = form.get('name');
+	const email = form.get('email');
+	const message = form.get('message');
+	const website = form.get('website');
+	// const token = form.get('cf-turnstile-response');
 	const [firstName, lastName] = name.split(' ');
 	const ip = request.headers.get('x-forwarded-for') ?? getClientAddress();
 

@@ -3,20 +3,12 @@ import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Anchor, { Link } from '@tiptap/extension-link';
 
-const html = 
-       `
+const html = `
       
         <p>Come see pH Factor play with special guest Mountlake Terrace High School Jazz Band in the Mountlake Terrace High School Theater.</p>
 
-       `
-        ;
+       `;
 
-const json = generateJSON(html, [
-	StarterKit,
-        Image,
-        Anchor,
-        Link
-]);
-
+const json = generateJSON(html, [StarterKit, Image, Anchor, Link]);
 
 console.log(JSON.stringify(json, null, 2));

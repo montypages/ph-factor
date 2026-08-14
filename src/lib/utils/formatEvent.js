@@ -54,7 +54,7 @@ export function formatEvent(event) {
 			minute: '2-digit'
 		}),
 
-        location: `${event.venue}, ${event.address}, ${event.city}, ${event.state} ${event.zip}`,
+		location: `${event.venue}, ${event.address}, ${event.city}, ${event.state} ${event.zip}`,
 
 		detailsHTML: event.details ? tiptapToHTML(event.details) : ''
 	};

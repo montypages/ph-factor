@@ -1,33 +1,33 @@
 /* COLORS, FONTS, and SPACING */
 
 :root {
-    --font-sans: "Montserrat", sans-serif;
-    --font-display: "Rock Salt", cursive;
+	--font-sans: 'Montserrat', sans-serif;
+	--font-display: 'Rock Salt', cursive;
 
-    --size--1: clamp(0.75rem, 0.7159rem + 0.1515vw, 0.8333rem);
-    --size-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
-    --size-1: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
-    --size-2: clamp(2.5313rem, 2.4162rem + 0.5114vw, 2.8125rem);
-    --size-3: clamp(3.7969rem, 3.6243rem + 0.767vw, 4.2188rem);
-    --size-4: clamp(5.6953rem, 5.4364rem + 1.1506vw, 6.3281rem);
-    --size-5: clamp(8.543rem, 8.1547rem + 1.7259vw, 9.4922rem);
+	--size--1: clamp(0.75rem, 0.7159rem + 0.1515vw, 0.8333rem);
+	--size-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+	--size-1: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
+	--size-2: clamp(2.5313rem, 2.4162rem + 0.5114vw, 2.8125rem);
+	--size-3: clamp(3.7969rem, 3.6243rem + 0.767vw, 4.2188rem);
+	--size-4: clamp(5.6953rem, 5.4364rem + 1.1506vw, 6.3281rem);
+	--size-5: clamp(8.543rem, 8.1547rem + 1.7259vw, 9.4922rem);
 
-    --clr-light: #ddd;
-    --clr-dark: #333;
-    --clr-dark-80: #333333c4;
-    --clr-dark-80: hsl(from var(--clr-dark) h s l / 0.8);
-    --clr-dark-50: #33333384;
-    --clr-dark-50: hsl(from var(--clr-dark) h s l / 0.5);
-    --clr-dark-20: #33333333;
-    --clr-dark-20: hsl(from var(--clr-dark) h s l / 0.2);
-    --clr-primary: hsl(288 78 82);
-    --clr-primary-100: hsl(from var(--clr-primary) h s l / 0.2);
-    --clr-primary-400: hsl(from var(--clr-primary) h s l / 0.5);
-    --clr-primary-800: hsl(from var(--clr-primary) h s l / 0.8);
-    --clr-secondary: #c7f2fc;
-    --clr-secondary-100: hsl(from var(--clr-secondary) h s l / 0.2);
-    --clr-secondary-400: hsl(from var(--clr-secondary) h s l / 0.5);
-    --clr-secondary-800: hsl(from var(--clr-secondary) h s l / 0.8);
+	--clr-light: #ddd;
+	--clr-dark: #333;
+	--clr-dark-80: #333333c4;
+	--clr-dark-80: hsl(from var(--clr-dark) h s l / 0.8);
+	--clr-dark-50: #33333384;
+	--clr-dark-50: hsl(from var(--clr-dark) h s l / 0.5);
+	--clr-dark-20: #33333333;
+	--clr-dark-20: hsl(from var(--clr-dark) h s l / 0.2);
+	--clr-primary: hsl(288 78 82);
+	--clr-primary-100: hsl(from var(--clr-primary) h s l / 0.2);
+	--clr-primary-400: hsl(from var(--clr-primary) h s l / 0.5);
+	--clr-primary-800: hsl(from var(--clr-primary) h s l / 0.8);
+	--clr-secondary: #c7f2fc;
+	--clr-secondary-100: hsl(from var(--clr-secondary) h s l / 0.2);
+	--clr-secondary-400: hsl(from var(--clr-secondary) h s l / 0.5);
+	--clr-secondary-800: hsl(from var(--clr-secondary) h s l / 0.8);
 
-    --border-radius: 0.2em;
+	--border-radius: 0.2em;
 }

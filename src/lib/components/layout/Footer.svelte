@@ -1,22 +1,22 @@
 <script>
 	import logo from '$lib/assets/phFactorLogoLarge.webp';
 	import ContactForm from '../ui/ContactForm.svelte';
-    import { resolve } from '$app/paths';
+	import { resolve } from '$app/paths';
 </script>
 
 <footer class="backdrop-blur">
 	<div class="footer-grid container">
 		<div class="logo">
-			<a href={resolve("/")}><img src={logo} alt="pH Factor Big Band" /></a>
+			<a href={resolve('/')}><img src={logo} alt="pH Factor Big Band" /></a>
 		</div>
 		<div class="links">
 			<h2>Links</h2>
 			<ul>
-				<li><a href={resolve("/")}>Home</a></li>
-				<li><a href={resolve("/listen")}>Listen</a></li>
-				<li><a href={resolve("/calendar")}>Calendar</a></li>
-				<li><a href={resolve("/about")}>About</a></li>
-				<li><a href={resolve("/contact")}>Contact</a></li>
+				<li><a href={resolve('/')}>Home</a></li>
+				<li><a href={resolve('/listen')}>Listen</a></li>
+				<li><a href={resolve('/calendar')}>Calendar</a></li>
+				<li><a href={resolve('/about')}>About</a></li>
+				<li><a href={resolve('/contact')}>Contact</a></li>
 			</ul>
 			<a
 				class="social-link facebook"
@@ -92,7 +92,7 @@
 		width: 100%;
 	}
 
-    .social-link {
-        font-size: var(--size-2);
-    }
+	.social-link {
+		font-size: var(--size-2);
+	}
 </style>

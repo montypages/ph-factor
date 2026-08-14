@@ -1,9 +1,9 @@
 <script>
 	import Button from '../ui/Button.svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	let { event, onDelete } = $props();
-
 </script>
 
 <div class="cal-event box">
@@ -27,7 +27,7 @@
 		<Button
 			btnText="Edit"
 			onclick={() => {
-				goto(`/admin/edit/${event.id}`);
+				goto(resolve(`/admin/edit/${event.id}`));
 			}}
 			btnSize="var(--size--1)"
 			btnColor="var(--clr-secondary)"

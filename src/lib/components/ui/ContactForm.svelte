@@ -1,13 +1,12 @@
 <script>
 	import Button from './Button.svelte';
-    import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
-    import Turnstile from './Turnstile.svelte';
+	import Turnstile from './Turnstile.svelte';
 
-    let turnstileToken = $state('');
+	let turnstileToken = $state('');
 
-    function handleTurnstileToken(token) {
-        turnstileToken = token;
-    }
+	function handleTurnstileToken(token) {
+		turnstileToken = token;
+	}
 
 	let { btnColor, btnTxtClr } = $props();
 
@@ -22,8 +21,8 @@
 		e.preventDefault();
 		submitting = true;
 
-        const form = e.currentTarget;
-        const formData = new FormData(form);
+		const form = e.currentTarget;
+		const formData = new FormData(form);
 
 		const response = await fetch('/api/contact', {
 			method: 'POST',
@@ -49,25 +48,18 @@
 		<form onsubmit={submitForm}>
 			<label for="name">
 				Name
-				<input type="text" name="name" id="name"  />
+				<input type="text" name="name" id="name" />
 			</label>
 			<label for="email">
 				Email
-				<input type="email" name="email" id="email"  />
+				<input type="email" name="email" id="email" />
 			</label>
 			<label for="message">
 				Message
-				<textarea name="message" id="message" rows="6" ></textarea>
+				<textarea name="message" id="message" rows="6"></textarea>
 			</label>
-			<input
-				class="hpot"
-				type="text"
-				name="website"
-				
-				tabindex="-1"
-				autocomplete="off"
-			/>
-            <Turnstile onSuccess={handleTurnstileToken} /> 
+			<input class="hpot" type="text" name="website" tabindex="-1" autocomplete="off" />
+			<Turnstile onSuccess={handleTurnstileToken} />
 			<Button
 				onclick={() => {}}
 				btnText={submitting ? 'Sending...' : 'Send'}
@@ -75,7 +67,7 @@
 				{btnTxtClr}
 				btnSize="var(--size-0)"
 				disabled={submitting || !turnstileToken}
-                type='submit'
+				type="submit"
 			/>
 		</form>
 	{/if}

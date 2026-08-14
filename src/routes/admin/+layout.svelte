@@ -1,7 +1,8 @@
 <script>
-import { invalidateAll, goto } from '$app/navigation';
-import Button from '$lib/components/ui/Button.svelte';
-import { supabase } from '$lib/supabase/client';
+	import { invalidateAll, goto } from '$app/navigation';
+	import Button from '$lib/components/ui/Button.svelte';
+	import { supabase } from '$lib/supabase/client';
+	import { resolve } from '$app/paths';
 
 	let { data, children } = $props();
 
@@ -17,7 +18,7 @@ import { supabase } from '$lib/supabase/client';
 
 		await invalidateAll();
 
-		await goto('/login');
+		await goto(resolve('/login'));
 	}
 </script>
 

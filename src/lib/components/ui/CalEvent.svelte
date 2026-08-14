@@ -1,6 +1,6 @@
 <script>
-	import { sanitizeHTML } from "$lib/utils/sanitizeHTML";
-	let { event, showDetails=false } = $props();
+	import { sanitizeHTML } from '$lib/utils/sanitizeHTML';
+	let { event, showDetails = false } = $props();
 
 	const isUpcoming = showDetails || event.fullDate >= new Date();
 </script>

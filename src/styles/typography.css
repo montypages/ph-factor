@@ -1,67 +1,71 @@
 /* HEADINGS, PARAGRAPHS */
 
 p {
-    font-family: var(--font-sans);
-    font-size: var(--size-1);
-    color: var(--clr-dark);
-    opacity: 0.7;
+	font-family: var(--font-sans);
+	font-size: var(--size-1);
+	color: var(--clr-dark);
+	opacity: 0.7;
 }
 
-h1, h2, h3, h4, h5 {
-    --heading-font: var(--font-display);
-    font-family: var(--heading-font);
-    font-weight: normal;
-    line-height: 1;
-    text-wrap: balance;
+h1,
+h2,
+h3,
+h4,
+h5 {
+	--heading-font: var(--font-display);
+	font-family: var(--heading-font);
+	font-weight: normal;
+	line-height: 1;
+	text-wrap: balance;
 }
 
 h3 {
-    font-size: var(--size-2);
+	font-size: var(--size-2);
 }
 
 h2 {
-    font-size: var(--size-3);
+	font-size: var(--size-3);
 }
 
 h1 {
-    font-size: var(--size-4);
+	font-size: var(--size-4);
 }
 
 .title {
-    font-size: var(--size-5);
+	font-size: var(--size-5);
 }
 
 a {
-    color: var(--clr-secondary-dk);
-    font-family: var(--font-sans);
-    line-height: 1.5;
-    letter-spacing: 0.1em;
-    opacity: 0.7;
+	color: var(--clr-secondary-dk);
+	font-family: var(--font-sans);
+	line-height: 1.5;
+	letter-spacing: 0.1em;
+	opacity: 0.7;
 }
 
-a:hover, a:focus {
-    opacity: 1;
+a:hover,
+a:focus {
+	opacity: 1;
 }
 
 @media (max-width: 768px) {
-    .title {
-        font-size: var(--size-3);
-    }
+	.title {
+		font-size: var(--size-3);
+	}
 
-    h1 {
-        font-size: var(--size-3);
-    }
+	h1 {
+		font-size: var(--size-3);
+	}
 
-    h2 {
-        font-size: var(--size-2);
-    }
+	h2 {
+		font-size: var(--size-2);
+	}
 
-    h3 {
-        font-size: var(--size-1);
-    }
+	h3 {
+		font-size: var(--size-1);
+	}
 
-    p {
-        font-size: var(--size-0);
-    }
+	p {
+		font-size: var(--size-0);
+	}
 }
-

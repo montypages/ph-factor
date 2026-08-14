@@ -2,6 +2,7 @@
 	import { supabase } from '$lib/supabase/client';
 	import { goto } from '$app/navigation';
 	import Button from '$lib/components/ui/Button.svelte';
+	import { resolve } from '$app/paths';
 
 	let email = $state('');
 	let password = $state('');
@@ -26,7 +27,7 @@
 			return;
 		}
 
-		await goto('/admin');
+		await goto(resolve('/admin'));
 	}
 </script>
 
@@ -52,7 +53,7 @@
 
 		<Button type="submit" btnText={loading ? 'Signing In...' : 'Sign In'} disabled={loading} />
 
-		<a href="/forgot-password">forgot password</a>
+		<a href={resolve('/forgot-password')}>forgot password</a>
 	</form>
 
 	{#if error}

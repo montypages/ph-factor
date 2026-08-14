@@ -10,11 +10,7 @@ export async function PUT({ locals, params, request }) {
 
 	const event = await request.json();
 
-	const updatedEvent = await updateEvent(
-		locals.supabase,
-		params.id,
-		event
-	);
+	const updatedEvent = await updateEvent(locals.supabase, params.id, event);
 
 	return json(updatedEvent);
 }

@@ -2,6 +2,7 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import { supabase } from '$lib/supabase/client';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	let password = $state('');
 	let confirmPassword = $state('');
@@ -38,7 +39,7 @@
 		success = true;
 
 		setTimeout(() => {
-			goto('/login');
+			goto(resolve('/login'));
 		}, 1000);
 	}
 </script>
@@ -49,7 +50,7 @@
 	{#if success}
 		<p>
 			Your password has been updated successfully.
-			<a href="/login">Click here</a> if you are not re-directed to login.
+			<a href={resolve('/login')}>Click here</a> if you are not re-directed to login.
 		</p>
 	{:else if loading}
 		<p>Updating your password...</p>

@@ -9,9 +9,7 @@ export function isRateLimited(ip) {
 	const timestamps = requests.get(ip) ?? [];
 
 	// Remove expired requests
-	const recent = timestamps.filter(
-		(time) => now - time < WINDOW_MS
-	);
+	const recent = timestamps.filter((time) => now - time < WINDOW_MS);
 
 	if (recent.length >= MAX_REQUESTS) {
 		requests.set(ip, recent);

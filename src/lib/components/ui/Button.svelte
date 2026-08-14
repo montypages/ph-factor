@@ -10,10 +10,10 @@
 	} = $props();
 </script>
 
-<button 
-	{onclick} 
+<button
+	{onclick}
 	style:--btn-size={btnSize}
-	style:--btn-color={btnColor} 
+	style:--btn-color={btnColor}
 	style:--btn-text-color={btnTxtClr}
 	{disabled}
 	{type}

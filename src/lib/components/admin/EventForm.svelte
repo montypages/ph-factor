@@ -5,6 +5,7 @@
 	import Button from '../ui/Button.svelte';
 	import CalEvent from '../ui/CalEvent.svelte';
 	import { formatEvent } from '$lib/utils/formatEvent';
+	import { resolve } from '$app/paths';
 
 	let { event = null } = $props();
 
@@ -81,9 +82,9 @@
 				return;
 			}
 
-			const result = await response.json();
+			// const result = await response.json();
 
-			await goto('/admin');
+			await goto(resolve('/admin'));
 		} catch (err) {
 			console.error(err);
 		}
@@ -94,18 +95,18 @@
 	<div class="event-container backdrop-blur">
 		<CalEvent showDetails={true} event={previewEvent} />
 	</div>
-	
+
 	<form>
 		<label>
 			Date & Time
 			<input type="datetime-local" bind:value={date_time} />
 		</label>
-	
+
 		<label>
 			Event
 			<input bind:value={name} />
 		</label>
-	
+
 		<label>
 			Slug
 			<input
@@ -115,17 +116,17 @@
 				}}
 			/>
 		</label>
-	
+
 		<label>
 			Venue
 			<input bind:value={venue} />
 		</label>
-	
+
 		<label>
 			Address
 			<input bind:value={address} />
 		</label>
-	
+
 		<div class="form-row">
 			<label class="city">
 				City
@@ -140,16 +141,21 @@
 				<input bind:value={zip} />
 			</label>
 		</div>
-	
+
 		<div class="form-col">
 			<label for="details"> Details </label>
 			<TipTapEditor id="details" content={details} updateContent={(value) => (details = value)} />
 		</div>
-	
-		<div class='cta-container'>
-			<Button onclick={() => goto('/admin')} type="button" btnText="Cancel" />
+
+		<div class="cta-container">
+			<Button onclick={() => goto(resolve('/admin'))} type="button" btnText="Cancel" />
 			<Button onclick={() => submitEvent(false)} type="button" btnText="Save Draft" />
-			<Button onclick={() => submitEvent(true)} type="button" btnText="Publish" btnColor="var(--clr-secondary)" />
+			<Button
+				onclick={() => submitEvent(true)}
+				type="button"
+				btnText="Publish"
+				btnColor="var(--clr-secondary)"
+			/>
 		</div>
 	</form>
 </div>

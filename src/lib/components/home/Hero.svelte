@@ -2,6 +2,7 @@
 	import heroImg from '$lib/assets/phFactorLogoLarge.webp';
 	import Button from '../ui/Button.svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 </script>
 
 <div class="hero-wrapper">
@@ -14,12 +15,12 @@
 			<h1 class="title">big band in Seattle</h1>
 			<div class="cta">
 				<Button
-					onclick={() => goto('/listen')}
+					onclick={() => goto(resolve('/listen'))}
 					btnText="Listen Now"
 					btnColor="var(--clr-secondary)"
 				/>
 				<Button
-					onclick={() => goto('/contact')}
+					onclick={() => goto(resolve('/contact'))}
 					btnText="Contact"
 					btnColor="var(--clr-primary)"
 					btnSize="var(size-0)"

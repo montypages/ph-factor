@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import Button from '$lib/components/ui/Button.svelte';
 	import AdminCalEvent from '$lib/components/admin/AdminCalEvent.svelte';
+	import { resolve } from '$app/paths';
 
 	let { data } = $props();
 	const events = data.events;
@@ -29,12 +30,12 @@
 </div>
 
 <div class="container padding-top-bottom">
-	<Button onclick={() => goto('/admin/new')} btnText="Create New Event" />
+	<Button onclick={() => goto(resolve('/admin/new'))} btnText="Create New Event" />
 </div>
 
 <div class="container">
 	<ul>
-		{#each events as event}
+		{#each events as event (event.id)}
 			<li class="post-item">
 				<AdminCalEvent {event} onDelete={handleDelete} />
 			</li>

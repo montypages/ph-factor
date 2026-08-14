@@ -8,16 +8,16 @@
 	<div class="container album-grid backdrop-blur box">
 		<h2 class="album-title">In Case of Emergency: Break Glass</h2>
 		<div class="player">
-            <iframe
-                title="In Case of Emergency: Break Glass by pH Factor Big Band"
-                style="border: 0; width: 100%; height: 621px;"
-                src="https://bandcamp.com/EmbeddedPlayer/album=130969494/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/"
-                seamless
-                ><a href="https://phfactorbigband.bandcamp.com/album/in-case-of-emergency-break-glass"
-                    >In Case of Emergency: Break Glass by pH Factor</a
-                ></iframe
-            >
-        </div>
+			<iframe
+				title="In Case of Emergency: Break Glass by pH Factor Big Band"
+				style="border: 0; width: 100%; height: 621px;"
+				src="https://bandcamp.com/EmbeddedPlayer/album=130969494/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/"
+				seamless
+				><a href="https://phfactorbigband.bandcamp.com/album/in-case-of-emergency-break-glass"
+					>In Case of Emergency: Break Glass by pH Factor</a
+				></iframe
+			>
+		</div>
 		<div class="copy">
 			<p>Directeor: Paul Harshman</p>
 
@@ -40,16 +40,16 @@
 	<div class="container album-grid backdrop-blur box">
 		<h2 class="album-title">The Music of Mat Montgomery</h2>
 		<div class="player">
-            <iframe
-                title="The Music of Mat Montgomery by pH Factor Big Band"
-                style="border: 0; width: 100%; height: 654px;"
-                src="https://bandcamp.com/EmbeddedPlayer/album=3068925089/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/"
-                seamless
-                ><a href="https://phfactorbigband.bandcamp.com/album/the-music-of-mat-montgomery"
-                    >The Music of Mat Montgomery by pH Factor</a
-                ></iframe
-            >
-        </div>
+			<iframe
+				title="The Music of Mat Montgomery by pH Factor Big Band"
+				style="border: 0; width: 100%; height: 654px;"
+				src="https://bandcamp.com/EmbeddedPlayer/album=3068925089/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/"
+				seamless
+				><a href="https://phfactorbigband.bandcamp.com/album/the-music-of-mat-montgomery"
+					>The Music of Mat Montgomery by pH Factor</a
+				></iframe
+			>
+		</div>
 		<div class="copy">
 			<p>Director: Paul Harshman</p>
 
@@ -77,9 +77,9 @@
 
 	.album h2 {
 		font-size: var(--size-2);
-        margin: 0;
-        position: relative;
-        z-index: 1;
+		margin: 0;
+		position: relative;
+		z-index: 1;
 	}
 
 	.copy p {
@@ -87,34 +87,33 @@
 	}
 
 	.album-grid {
-        width: min(800px, 90%);
+		width: min(800px, 90%);
 		display: grid;
 		grid-template-areas:
 			'title title'
 			'player copy';
-        grid-template-columns: auto 1fr;
-
+		grid-template-columns: auto 1fr;
 	}
 
-    @media (max-width: 768px) {
-        .album-grid {
-            grid-template-areas: 
-            "title"
-            "player"
-            "copy";
+	@media (max-width: 768px) {
+		.album-grid {
+			grid-template-areas:
+				'title'
+				'player'
+				'copy';
 			grid-template-columns: minmax(0, 1fr);
-        }
+		}
 
-        .player {
+		.player {
 			width: 100%;
 			max-width: 350px;
-            justify-self: center;
-        }
+			justify-self: center;
+		}
 
 		.copy {
 			min-width: 0;
 		}
-    }
+	}
 
 	.album-title {
 		grid-area: title;
@@ -122,8 +121,8 @@
 
 	.player {
 		grid-area: player;
-        border-radius: 0.5rem;
-        overflow: clip;
+		border-radius: 0.5rem;
+		overflow: clip;
 		min-width: 0;
 		width: min(100%, 350px);
 	}

@@ -6,13 +6,14 @@
 @import './utilities.css';
 
 body {
-    background-color: var(--clr-dark);
-    background-image: url('/images/water-color.avif');
-    background-size: 100% auto;
-    background-repeat: repeat-y;
-    color: var(--clr-dark);
+	background-color: var(--clr-dark);
+	background-image: url('/images/water-color.avif');
+	background-size: 100% auto;
+	background-repeat: repeat-y;
+	color: var(--clr-dark);
 }
 
-html, body {
-    overflow-x: hidden;
+html,
+body {
+	overflow-x: hidden;
 }
