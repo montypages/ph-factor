@@ -47,7 +47,6 @@
 		"@tiptap/starter-kit": "^3.29.1",
 		"browser-image-compression": "^2.0.2",
 		"dompurify": "^3.4.13",
-		"isomorphic-dompurify": "^3.19.0",
 		"nodemailer": "^9.0.3"
 	}
 }
