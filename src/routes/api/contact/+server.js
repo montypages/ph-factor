@@ -12,14 +12,14 @@ export async function POST({ request, getClientAddress }) {
 	const website = form.get('website');
 	const token = form.get('cf-turnstile-response');
 	const ip = request.headers.get('x-forwarded-for') ?? getClientAddress();
-	
+
 	if (!token) {
 		return json(
 			{ success: false, message: '<p class="error">Please complete the security check.</p>' },
 			{ status: 400 }
 		);
 	}
-	
+
 	if (isRateLimited(ip)) {
 		return json(
 			{
@@ -29,7 +29,7 @@ export async function POST({ request, getClientAddress }) {
 			{ status: 429 }
 		);
 	}
-	
+
 	// Validate
 	if (!name || !email || !message) {
 		return json(
@@ -37,9 +37,9 @@ export async function POST({ request, getClientAddress }) {
 			{ status: 400 }
 		);
 	}
-	
+
 	const [firstName, lastName] = name.split(' ');
-	
+
 	if (website) {
 		return json({
 			success: true,
@@ -51,23 +51,53 @@ export async function POST({ request, getClientAddress }) {
 		});
 	}
 
-	const turnstileResponse = await fetch(
-		'https://challenges.cloudflare.com/turnstile/v0/siteverify',
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			body: new URLSearchParams({
-				secret: TURNSTILE_SECRET_KEY,
-				response: token
-			})
-		}
-	);
+	let turnstileResult;
 
-	const turnstileResult = await turnstileResponse.json();
+	try {
+		const turnstileResponse = await fetch(
+			'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				body: new URLSearchParams({
+					secret: TURNSTILE_SECRET_KEY,
+					response: token
+				})
+			}
+		);
+
+		if (!turnstileResponse.ok) {
+			console.error('Turnstile verification HTTP error:', turnstileResponse.status);
+
+			return json(
+				{
+					success: false,
+					message:
+						'<p class="error">Security verification is temporarily unavailable. Please try again.</p>'
+				},
+				{ status: 503 }
+			);
+		}
+
+		turnstileResult = await turnstileResponse.json();
+	} catch (error) {
+		console.error('Turnstile verification failed:', error);
+
+		return json(
+			{
+				success: false,
+				message:
+					'<p class="error">Security verification is temporarily unavailable. Please try again.</p>'
+			},
+			{ status: 503 }
+		);
+	}
 
 	if (!turnstileResult.success) {
+		console.error('Turnstile verification rejected:', turnstileResult);
+
 		return json(
 			{
 				success: false,
